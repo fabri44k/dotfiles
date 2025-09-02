@@ -44,11 +44,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.hl.on_yank()
-    end,
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 -- vim: ts=2 sts=2 sw=2 et
@@ -97,8 +97,35 @@ vim.keymap.set('v', '>', '>gv', opts)
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
-vim.keymap.set('n', '<leader>x', ':bdelete!<CR>', opts)   -- close buffer
+vim.keymap.set('n', '<leader>x', ':Bdelete<CR>', opts) -- close buffer
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
+-- BufferLine extension
+
+-- Sposta buffer a sinistra
+vim.keymap.set('n', '<leader><S-h>', '<cmd>BufferLineMovePrev<CR>', { desc = 'Buffer ⇐' })
+-- Sposta buffer a destra
+vim.keymap.set('n', '<leader><S-l>', '<cmd>BufferLineMoveNext<CR>', { desc = 'Buffer ⇒' })
 
 -- CTR + A
 vim.keymap.set('n', '<C-a>', 'ggVG', opts)
+
+-- Remapping di y$ a Y
+vim.keymap.set('n', 'Y', 'y$', opts)
+
+-- Outline
+vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>', opts)
+
+-- Navigazione rapida tra split
+vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = -1, float = true }
+end, { desc = 'Go to previous diagnostic message' })
+
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = 1, float = true }
+end, { desc = 'Go to next diagnostic message' })
