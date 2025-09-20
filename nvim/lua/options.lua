@@ -91,3 +91,4 @@ vim.o.smartindent = true
 vim.o.showtabline = 2 -- Always show tabs (default: 1)
 vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
 vim.opt.iskeyword:append '-' -- Hyphenated words recognized by searches (default: does not include '-')
+vim.opt.spelllang = { 'en', 'it' }

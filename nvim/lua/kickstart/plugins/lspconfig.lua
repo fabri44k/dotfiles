@@ -149,9 +149,6 @@ return {
                 vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
               end,
             })
-
-
-
           end
 
           -- The following code creates a keymap to toggle inlay hints in your
@@ -241,7 +238,8 @@ return {
 
         jsonls = {},
         html = {},
-        sqlls = {}
+        sqlls = {},
+        marksman = {},
       }
 
       -- Ensure the servers and tools above are installed
