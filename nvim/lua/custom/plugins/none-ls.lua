@@ -16,7 +16,7 @@ return {
                 'eslint_d', -- ts/js linter
                 'shfmt', -- Shell formatter
                 'stylua', -- lua formatter; Already installed via Mason
-                'ruff', -- Python linter and formatter; Already installed via Mason
+                -- 'ruff', -- Python linter and formatter; Already installed via Mason
             },
             automatic_installation = true,
         }
