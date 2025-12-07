@@ -1,5 +1,5 @@
 return {
-  -- 'mfussenegger/nvim-jdtls', jdlts installed with brew
-  'nvim-java/nvim-java',
-  config = function() end,
+  -- 'mfussenegger/nvim-jdtls', enable this one only the first time for the installtion
+  -- 'nvim-java/nvim-java',
+  -- config = function() end,
 }

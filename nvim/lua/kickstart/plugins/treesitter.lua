@@ -28,6 +28,7 @@ return {
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
+      ignore_install = { 'latex' }, -- causa conflitto con texlab
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.

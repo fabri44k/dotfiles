@@ -41,11 +41,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.hl.on_yank()
-    end,
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 -- vim: ts=2 sts=2 sw=2 et
@@ -97,7 +97,7 @@ vim.keymap.set('v', '>', '>gv', opts)
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
-vim.keymap.set('n', '<leader>x', ':Bdelete<CR>', opts)    -- close buffer
+vim.keymap.set('n', '<leader>q', ':Bdelete<CR>', opts) -- close buffer
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 -- BufferLine extension
 
@@ -124,19 +124,19 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', function()
-    vim.diagnostic.jump { count = -1, float = true }
+  vim.diagnostic.jump { count = -1, float = true }
 end, { desc = 'Go to previous diagnostic message' })
 
 vim.keymap.set('n', ']d', function()
-    vim.diagnostic.jump { count = 1, float = true }
+  vim.diagnostic.jump { count = 1, float = true }
 end, { desc = 'Go to next diagnostic message' })
 
 -- Vertical Split with terminal in the same folder as the current buffer
 
 vim.api.nvim_create_user_command('Vst', function()
-    local current_dir = vim.fn.expand '%:p:h'
-    if current_dir ~= '' then
-        vim.cmd('lcd ' .. vim.fn.fnameescape(current_dir))
-    end
-    vim.cmd 'vertical terminal'
+  local current_dir = vim.fn.expand '%:p:h'
+  if current_dir ~= '' then
+    vim.cmd('lcd ' .. vim.fn.fnameescape(current_dir))
+  end
+  vim.cmd 'vertical terminal'
 end, {})

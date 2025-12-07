@@ -208,22 +208,29 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+
         clangd = {},
+
         gopls = {},
-        -- basedpyright = {
-        --   cmd = { 'basedpyright-langserver', '--stdio' },
-        --   settings = {
-        --     basedpyright = {
-        --       analysis = {
-        --         typecheckingmode = 'basic',
-        --         autoSearchPaths = true,
-        --         diagnosticMode = 'openFilesOnly',
-        --         useLibraryCodeForTypes = true,
-        --       },
-        --     },
-        --   },
-        -- },
-        pylsp = {},
+
+        basedpyright = {
+          cmd = { 'basedpyright-langserver', '--stdio' },
+          settings = {
+            basedpyright = {
+              analysis = {
+                typecheckingmode = 'strict',
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
+        -- sometimes even if they are disabled, they are still active, uninstall them using mason
+        -- pylsp = {},
+
+        -- ruff = {},
+
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -252,13 +259,15 @@ return {
         jsonls = {},
         html = {},
         sqlls = {},
+
         marksman = {},
-        -- ruff = {},
+
         texlab = {},
-        phpactor = {
-          cmd = { 'phpactor', 'language-server' },
-          filetypes = { 'php' },
-        },
+
+        -- phpactor = {
+        --   cmd = { 'phpactor', 'language-server' },
+        --   filetypes = { 'php' },
+        -- },
       }
 
       -- Ensure the servers and tools above are installed
