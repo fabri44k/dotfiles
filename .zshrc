@@ -137,6 +137,10 @@ function y() {
 alias nv="nvim"
 alias cls="clear"
 
+# previene la sovrascrittura dei file
+alias cp="cp -i"
+alias mv="mv -i"
+
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
@@ -150,3 +154,7 @@ eval "$(pyenv virtualenv-init - zsh)"
 
 alias cdc="cd ~/PROGETTI/Coding"
 alias nnd="nvim ~/NOTE"
+alias nvv="nvim ."
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_QPA_PLATFORMTHEME=qt5ct
+eval "$(zoxide init zsh)"

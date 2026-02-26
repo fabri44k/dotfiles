@@ -11,6 +11,7 @@ return {
   config = function()
     -- default settings
     require('origami').setup {
+      -- useLspFoldsWithTreesitterFallback = true,
       pauseFoldsOnSearch = true,
       foldtext = {
         enabled = true,
@@ -24,7 +25,7 @@ return {
         disableOnFt = { 'snacks_picker_input' }, ---@type string[]
       },
       autoFold = {
-        enabled = true,
+        enabled = false,
         kinds = { 'comment', 'imports' }, ---@type lsp.FoldingRangeKind[]
       },
       foldKeymaps = {

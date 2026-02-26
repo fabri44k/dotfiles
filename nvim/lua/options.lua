@@ -19,9 +19,11 @@ vim.o.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
+-- Se vuoi evitare la notifica di gnome (wl-clipboard is ready) non mettere la finestra a schermo intero (senza bordo)
 vim.schedule(function()
     vim.o.clipboard = 'unnamedplus'
-end) -- Enable break indent
+end)
+-- Enable break indent
 vim.o.breakindent = true
 
 -- Save undo history
