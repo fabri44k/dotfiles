@@ -1,0 +1,122 @@
+// Zed keymap mirroring nvim/lua/keymaps.lua
+// Leader = space (matches nvim mapleader)
+[
+  // Editor-wide shortcuts (all vim modes + non-vim usage)
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-s": "workspace::Save",
+      "ctrl-q": "pane::CloseActiveItem",
+      "ctrl-a": "editor::SelectAll"
+    }
+  },
+
+  // Insert mode: jj -> Esc
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j j": "vim::NormalBefore"
+    }
+  },
+
+  // Normal mode
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      // Buffer cycling
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePrevItem",
+
+      // Y -> y$
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
+
+      // x without yanking (blackhole register)
+      "x": ["workspace::SendKeystrokes", "\" _ x"],
+
+      // Search and center (n -> nzzzv, N -> Nzzzv)
+      "n": ["workspace::SendKeystrokes", "n z z z v"],
+      "shift-n": ["workspace::SendKeystrokes", "shift-n z z z v"],
+
+      // Half-page scroll and recenter
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+
+      // Leader (space) bindings
+      "space q": "pane::CloseActiveItem",
+      "space b": "workspace::NewFile",
+      "space shift-h": "pane::SwapItemLeft",
+      "space shift-l": "pane::SwapItemRight",
+      "space o": "outline_panel::ToggleFocus",
+
+      // Diagnostic navigation
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] d": "editor::GoToDiagnostic",
+
+      // File tree (nvim Neo-tree reveal)
+      "\\": "pane::RevealInProjectPanel",
+
+      // LSP (matches kickstart lspconfig.lua)
+      "g r d": "editor::GoToDefinition",
+      "g r shift-d": "editor::GoToDeclaration",
+      "g r r": "editor::FindAllReferences",
+      "g r i": "editor::GoToImplementation",
+      "g r t": "editor::GoToTypeDefinition",
+      "g r n": "editor::Rename",
+      "g r a": "editor::ToggleCodeActions",
+      "g shift-o": "outline::Toggle",
+      "g shift-w": "project_symbols::Toggle",
+      "space t h": "editor::ToggleInlayHints"
+    }
+  },
+
+  // Project panel: neotree-style file operations
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "\\": "workspace::ToggleLeftDock",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Trash",
+      "shift-d": "project_panel::Delete",
+      "c": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "y": "project_panel::CopyPath",
+      "shift-y": "project_panel::CopyRelativePath",
+      "o": "project_panel::Open",
+      "enter": "project_panel::Open",
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+      "shift-h": "project_panel::ToggleHideGitIgnore",
+      "R": "project_panel::RevealInFileManager"
+    }
+  },
+
+  // Visual mode
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      // Paste without overwriting unnamed register
+      "p": ["workspace::SendKeystrokes", "\" _ d shift-p"],
+
+      // Stay in visual after indent (gv re-select)
+      "<": ["workspace::SendKeystrokes", "< g v"],
+      ">": ["workspace::SendKeystrokes", "> g v"],
+
+      // Select-all visible while in visual
+      "ctrl-a": "editor::SelectAll",
+
+      // Code action also available on a visual selection (matches nvim 'gra' in x mode)
+      "g r a": "editor::ToggleCodeActions"
+    }
+  }
+]
