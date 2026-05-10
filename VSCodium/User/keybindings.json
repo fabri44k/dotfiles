@@ -1,0 +1,20 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.toggleSidebarVisibility"
+
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "editorTextFocus"
+
+    },
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+
+    }
+]

@@ -1,0 +1,57 @@
+{
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  },
+  "[plaintext]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  },
+  "workbench.colorTheme": "Atom One Dark",
+  "files.autoSave": "afterDelay",
+  "editor.wordWrap": "on",
+  "cSpell.language": "en,en-US,it,it-IT",
+  "latex-workshop.latex.outDir": "%TMPDIR%",
+  "vim.useSystemClipboard": true,
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  "vim.highlightedyank.textColor": "white",
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "editor.lineNumbers": "relative",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-d>": false,
+    "<C-c>": false,
+    "<C-x>": false,
+    "<C-v>": false,
+    "<C-z>": false,
+    "<C-y>": false
+  },
+  "workbench.startupEditor": "none",
+  "latex-workshop.message.error.show": false,
+  "latex-workshop.message.warning.show": false,
+  "workbench.iconTheme": "vscode-great-icons",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "editor.fontFamily": "monospace",
+}

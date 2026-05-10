@@ -1,0 +1,8 @@
+akamud.vscode-theme-onedark
+emmanuelbeziat.vscode-great-icons
+james-yu.latex-workshop
+shd101wyy.markdown-preview-enhanced
+streetsidesoftware.code-spell-checker
+streetsidesoftware.code-spell-checker-italian
+vscodevim.vim
+yzhang.markdown-all-in-one
