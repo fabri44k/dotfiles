@@ -54,8 +54,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Diagnostic keymaps (<leader>q is used to close the buffer below)
+vim.keymap.set('n', '<leader>d', function()
+  vim.diagnostic.setqflist { open = true }
+end, { desc = 'Open [D]iagnostics quickfix list' })
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -66,8 +68,12 @@ local opts = { noremap = true, silent = true }
 -- save file
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
--- quit file
-vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
+-- quit file (close neo-tree and outline first so nvim actually exits)
+vim.keymap.set('n', '<C-q>', function()
+  pcall(vim.cmd, 'Neotree close')
+  pcall(vim.cmd, 'OutlineClose')
+  vim.cmd 'q'
+end, opts)
 
 -- delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts)
