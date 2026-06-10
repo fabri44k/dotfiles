@@ -1,0 +1,13 @@
+# wofi - configurazione minimale (app launcher con icone)
+show=drun
+prompt=Cerca
+allow_images=true
+image_size=28
+insensitive=true
+no_actions=true
+hide_scroll=true
+width=520
+lines=8
+columns=1
+term=kitty
+gtk_dark=true
