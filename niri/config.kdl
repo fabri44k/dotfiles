@@ -53,8 +53,9 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        // accel-speed va da -1 (più lento) a 1 (più veloce), default 0.
+        // accel-speed 0.25
+        accel-profile "flat"
         // scroll-method "no-scroll"
     }
 
@@ -277,7 +278,8 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "qs" "-c" "noctalia-shell"
-// spawn-sh-at-startup " swaybg -i ~/Immagini/Wallpapers/forest_2.jpg"
+spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -296,7 +298,7 @@ hotkey-overlay {
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Immagini/Schermate/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -379,7 +381,8 @@ binds {
     Mod+E hotkey-overlay-title="Open Files: nautilus" { spawn "nautilus"; }
     Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "flatpak" "run" "app.zen_browser.zen"; }
     Ctrl+Alt+End hotkey-overlay-title="Session Menu: Spegni/Riavvia/Sospendi" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Lock the Screen (Noctalia)" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -625,9 +628,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
+    Alt+S { screenshot; }
     Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Alt+F { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -641,9 +644,12 @@ binds {
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
+    Ctrl+Alt+Insert { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+    // OCR: Cattura un'area, estrai il testo (ITA+ENG) e copialo negli appunti
+    Alt+O { spawn "bash" "-c" "grim -g \"$(slurp)\" - | tesseract - - -l ita+eng | wl-copy"; }
 }

@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Diagnostic keymaps (<leader>q is used to close the buffer below)
+-- Diagnostic keymaps
 vim.keymap.set('n', '<leader>d', function()
   vim.diagnostic.setqflist { open = true }
 end, { desc = 'Open [D]iagnostics quickfix list' })
