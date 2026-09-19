@@ -1,0 +1,10 @@
+{
+  // Regole markdownlint globali.
+  // Elenco completo: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+  // MD013 - line-length: non spezzo le righe a 80 colonne.
+  "MD013": false,
+
+  // MD034 - no-bare-urls: gli URL nudi vanno bene.
+  "MD034": false
+}

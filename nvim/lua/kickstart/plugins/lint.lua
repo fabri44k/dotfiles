@@ -9,6 +9,15 @@ return {
         markdown = { 'markdownlint' },
       }
 
+      -- nvim-lint invoca markdownlint con --stdin, quindi la ricerca automatica
+      -- del .markdownlint.json non è affidabile: passiamo il config esplicito.
+      -- Le regole disabilitate (MD013 line-length, MD034 no-bare-urls) stanno lì.
+      lint.linters.markdownlint.args = {
+        '--config',
+        vim.fn.expand '~/.config/markdownlint/config.jsonc',
+        '--stdin',
+      }
+
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
       -- lint.linters_by_ft = lint.linters_by_ft or {}

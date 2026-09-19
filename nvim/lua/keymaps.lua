@@ -146,3 +146,7 @@ vim.api.nvim_create_user_command('Vst', function()
   end
   vim.cmd 'vertical terminal'
 end, {})
+
+-- autosession session serch
+-- :AutoSession search
+vim.keymap.set('n', '<C-A-r>', '<cmd>AutoSession search<cr>', { desc = 'AutoSession search' })

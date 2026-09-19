@@ -21,7 +21,7 @@ vim.o.showmode = false
 --  See `:help 'clipboard'`
 -- Se vuoi evitare la notifica di gnome (wl-clipboard is ready) non mettere la finestra a schermo intero (senza bordo)
 vim.schedule(function()
-    vim.o.clipboard = 'unnamedplus'
+  vim.o.clipboard = 'unnamedplus'
 end)
 -- Enable break indent
 vim.o.breakindent = true
@@ -79,16 +79,17 @@ vim.o.confirm = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.swapfile = false
-vim.o.linebreak = true       -- Dont split words
-vim.o.autoindent = true      -- Copy indent from current line when starting new one (default: true)
-vim.o.ignorecase = true      -- Case-insensitive searching UNLESS \C or capital in search (default: false)
-vim.o.smartcase = true       -- Smart case (default: false)
-vim.o.shiftwidth = 4         -- The number of spaces inserted for each indentation (default: 8)
-vim.o.tabstop = 4            -- Insert n spaces for a tab (default: 8)
-vim.o.softtabstop = 4        -- Number of spaces that a tab counts for while performing editing operations (default: 0)
-vim.o.expandtab = true       -- Convert tabs to spaces (default: false)
+vim.o.linebreak = true -- Dont split words
+vim.o.autoindent = true -- Copy indent from current line when starting new one (default: true)
+vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search (default: false)
+vim.o.smartcase = true -- Smart case (default: false)
+vim.o.shiftwidth = 4 -- The number of spaces inserted for each indentation (default: 8)
+vim.o.tabstop = 4 -- Insert n spaces for a tab (default: 8)
+vim.o.softtabstop = 4 -- Number of spaces that a tab counts for while performing editing operations (default: 0)
+vim.o.expandtab = true -- Convert tabs to spaces (default: false)
 vim.o.smartindent = true
-vim.o.showtabline = 2        -- Always show tabs (default: 1)
-vim.o.conceallevel = 0       -- So that `` is visible in markdown files (default: 1)
+vim.o.showtabline = 2 -- Always show tabs (default: 1)
+vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
 vim.opt.iskeyword:append '-' -- Hyphenated words recognized by searches (default: does not include '-')
 vim.opt.spelllang = { 'en', 'it' }
+vim.opt.termguicolors = true

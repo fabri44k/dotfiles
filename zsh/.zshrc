@@ -145,16 +145,9 @@ alias mv="mv -i"
 
 eval "$(atuin init zsh)"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-eval "$(pyenv virtualenv-init - zsh)"
-. "/home/fabri/.deno/env"
-
+[ -f "$HOME/.deno/env" ] && source "$HOME/.deno/env"
 alias cdc="cd ~/PROGETTI/Coding"
 alias nnd="nvim ~/NOTE"
-alias nvv="nvim ."
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 eval "$(zoxide init zsh)"
