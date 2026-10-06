@@ -7,6 +7,7 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        make = { 'checkmake' },
       }
 
       -- nvim-lint invoca markdownlint con --stdin, quindi la ricerca automatica

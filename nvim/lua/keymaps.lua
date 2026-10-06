@@ -96,10 +96,6 @@ vim.keymap.set('i', 'jj', '<Esc>', opts)
 vim.keymap.set('n', 'n', 'nzzzv', opts)
 vim.keymap.set('n', 'N', 'Nzzzv', opts)
 
--- Stay in indent mode
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
-
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
@@ -121,12 +117,6 @@ vim.keymap.set('n', 'Y', 'y$', opts)
 
 -- Outline
 vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>', opts)
-
--- Navigazione rapida tra split
-vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', function()

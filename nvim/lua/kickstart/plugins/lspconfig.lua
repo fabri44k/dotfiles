@@ -221,7 +221,8 @@ return {
                 autoSearchPaths = true,
                 diagnosticMode = 'openFilesOnly',
                 useLibraryCodeForTypes = true,
-                typeCheckingMode = 'all',
+                -- 'standard' | 'recommended' (basedpyright default) | 'all'
+                typeCheckingMode = 'recommended',
               },
             },
           },
@@ -286,22 +287,28 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'prettier', -- html/json/yaml/markdown formatter
+        'shfmt', -- Shell formatter
+        'checkmake', -- Makefile linter (nvim-lint)
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- Register the overrides above with Neovim's native LSP config (nvim 0.11+).
+      -- mason-lspconfig v2 no longer supports `handlers`: it only enables the
+      -- installed servers, which then pick up these configs.
+      for server_name, server in pairs(servers) do
+        -- This handles overriding only values explicitly passed
+        -- by the server configuration above. Useful when disabling
+        -- certain features of an LSP (for example, turning off formatting for ts_ls)
+        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+        vim.lsp.config(server_name, server)
+      end
+
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
+        -- calls vim.lsp.enable() for every server installed with Mason.
+        -- stylua is installed only as a CLI formatter for conform: don't start it as an LSP.
+        automatic_enable = { exclude = { 'stylua' } },
       }
     end,
   },
