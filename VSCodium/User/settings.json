@@ -1,4 +1,25 @@
 {
+  // ==========================================================================
+  // Workbench / UI
+  // ==========================================================================
+  "workbench.colorTheme": "Atom One Dark",
+  "workbench.iconTheme": "vscode-great-icons",
+  "workbench.startupEditor": "none",
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+
+  // ==========================================================================
+  // Editor / Files
+  // ==========================================================================
+  "editor.fontFamily": "monospace",
+  "editor.wordWrap": "on",
+  "files.autoSave": "afterDelay",
+  // Find in files (<leader>sg / <leader>sw) seeds with the word under the cursor
+  "search.seedWithNearestWord": true,
+
+  // ==========================================================================
+  // Languages
+  // ==========================================================================
   "[markdown]": {
     "editor.quickSuggestions": {
       "other": true,
@@ -13,45 +34,106 @@
       "strings": true
     }
   },
-  "workbench.colorTheme": "Atom One Dark",
-  "files.autoSave": "afterDelay",
-  "editor.wordWrap": "on",
+
+  // ==========================================================================
+  // Extensions
+  // ==========================================================================
   "cSpell.language": "en,en-US,it,it-IT",
   "latex-workshop.latex.outDir": "%TMPDIR%",
-  "vim.useSystemClipboard": true,
-  "vim.highlightedyank.enable": true,
-  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
-  "vim.highlightedyank.textColor": "white",
+  "latex-workshop.message.error.show": false,
+  "latex-workshop.message.warning.show": false,
+
+  // ==========================================================================
+  // VIM (VSCodeVim) — mirror of nvim/lua/keymaps.lua
+  // Copy from here to the end of the file to port the whole vim setup.
+  // Non-editor keys (ctrl+hjkl, explorer, Tab) live in keybindings.json.
+  // ==========================================================================
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },
   "editor.lineNumbers": "relative",
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
+
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  // Without this j/k open closed folds
+  "vim.foldfix": true,
+
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  "vim.highlightedyank.textColor": "white",
+
+  // Keys left to VS Code instead of vim
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false,
-    "<C-d>": false,
     "<C-c>": false,
     "<C-x>": false,
     "<C-v>": false,
     "<C-z>": false,
     "<C-y>": false
   },
-  "workbench.startupEditor": "none",
-  "latex-workshop.message.error.show": false,
-  "latex-workshop.message.warning.show": false,
-  "workbench.iconTheme": "vscode-great-icons",
-  "window.commandCenter": false,
-  "workbench.layoutControl.enabled": false,
-  "editor.fontFamily": "monospace",
+
+  "vim.insertModeKeyBindings": [
+    { "before": ["j", "j"], "after": ["<Esc>"] }
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // --- Basic remaps ---
+    { "before": ["<Esc>"], "commands": [":nohl"] },
+    { "before": ["x"], "after": ["\"", "_", "x"] },
+    { "before": ["Y"], "after": ["y", "$"] },
+    { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
+    { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
+    { "before": ["n"], "after": ["n", "z", "z"] },
+    { "before": ["N"], "after": ["N", "z", "z"] },
+
+    // --- Buffers (editors) ---
+    { "before": ["<leader>", "q"], "commands": ["workbench.action.closeActiveEditor"] },
+    { "before": ["<leader>", "b"], "commands": ["workbench.action.files.newUntitledFile"] },
+    { "before": ["<leader>", "H"], "commands": ["workbench.action.moveEditorLeftInGroup"] },
+    { "before": ["<leader>", "L"], "commands": ["workbench.action.moveEditorRightInGroup"] },
+
+    // --- File explorer (neo-tree) ---
+    { "before": ["\\"], "commands": ["workbench.files.action.showActiveFileInExplorer"] },
+
+    // --- Search (telescope) ---
+    { "before": ["<leader>", "s", "f"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["<leader>", "s", "g"], "commands": ["workbench.action.findInFiles"] },
+    { "before": ["<leader>", "s", "w"], "commands": ["workbench.action.findInFiles"] },
+    { "before": ["<leader>", "s", "."], "commands": ["workbench.action.openRecent"] },
+    { "before": ["<leader>", "s", "k"], "commands": ["workbench.action.openGlobalKeybindings"] },
+    { "before": ["<leader>", "s", "d"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "<leader>"], "commands": ["workbench.action.showAllEditorsByMostRecentlyUsed"] },
+    { "before": ["<leader>", "/"], "commands": ["workbench.action.quickTextSearch"] },
+
+    // --- LSP ---
+    { "before": ["g", "r", "d"], "commands": ["editor.action.revealDefinition"] },
+    { "before": ["g", "r", "D"], "commands": ["editor.action.revealDeclaration"] },
+    { "before": ["g", "r", "r"], "commands": ["editor.action.goToReferences"] },
+    { "before": ["g", "r", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "r", "t"], "commands": ["editor.action.goToTypeDefinition"] },
+    { "before": ["g", "r", "n"], "commands": ["editor.action.rename"] },
+    { "before": ["g", "r", "a"], "commands": ["editor.action.quickFix"] },
+    { "before": ["g", "O"], "commands": ["workbench.action.gotoSymbol"] },
+    { "before": ["g", "W"], "commands": ["workbench.action.showAllSymbols"] },
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+    { "before": ["<leader>", "f"], "commands": ["editor.action.formatDocument"] },
+    { "before": ["<leader>", "o"], "commands": ["outline.focus"] },
+
+    // --- Diagnostics ---
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+    { "before": ["<leader>", "d"], "commands": ["workbench.actions.view.problems"] }
+  ],
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // Stay in indent mode
+    { "before": ["<"], "after": ["<", "g", "v"] },
+    { "before": [">"], "after": [">", "g", "v"] },
+    // Keep last yanked when pasting
+    { "before": ["p"], "after": ["\"", "_", "d", "P"] },
+    // LSP code action on selection
+    { "before": ["g", "r", "a"], "commands": ["editor.action.quickFix"] }
+  ]
 }
