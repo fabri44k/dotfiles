@@ -89,4 +89,13 @@ vim.o.showtabline = 2 -- Always show tabs (default: 1)
 vim.o.conceallevel = 0 -- So that `` is visible in markdown files (default: 1)
 vim.opt.iskeyword:append '-' -- Hyphenated words recognized by searches (default: does not include '-')
 vim.opt.spelllang = { 'en', 'it' }
+-- Spellcheck only on markdown ('spell' is window-local: setlocal keeps it off for other files).
+-- spellwarn.nvim only reports diagnostics where 'spell' is on, so it follows this too.
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('markdown-spell', { clear = true }),
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
 vim.opt.termguicolors = true

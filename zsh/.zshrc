@@ -136,6 +136,7 @@ function y() {
 
 alias nv="nvim"
 alias cls="clear"
+alias ssh="kitty +kitten ssh"
 
 # previene la sovrascrittura dei file
 alias cp="cp -i"

@@ -54,7 +54,7 @@
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": false,
-        "marginHorizontal": 6,
+        "marginHorizontal": 20,
         "marginVertical": 1,
         "middleClickAction": "none",
         "middleClickCommand": "",
@@ -114,6 +114,15 @@
             ],
             "right": [
                 {
+                    "defaultSettings": {
+                        "compactMode": false,
+                        "defaultDuration": 0,
+                        "iconColor": "none",
+                        "textColor": "none"
+                    },
+                    "id": "plugin:timer"
+                },
+                {
                     "blacklist": [
                     ],
                     "chevronColor": "none",
@@ -122,6 +131,8 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
+                        "proton.vpn.app.gtk",
+                        "pCloud Drive"
                     ]
                 },
                 {
@@ -332,7 +343,7 @@
         "avatarImage": "/home/fabri/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "custom",
+        "clockStyle": "digital",
         "compactLockScreen": true,
         "dimmerOpacity": 0.2,
         "enableBlurBehind": true,
@@ -367,8 +378,8 @@
         },
         "language": "",
         "lockOnSuspend": true,
-        "lockScreenAnimations": false,
-        "lockScreenBlur": 0.1,
+        "lockScreenAnimations": true,
+        "lockScreenBlur": 0.61,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
@@ -410,7 +421,7 @@
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
         "screenOffCommand": "",
-        "screenOffTimeout": 600,
+        "screenOffTimeout": 300,
         "suspendCommand": "",
         "suspendTimeout": 0
     },
@@ -615,7 +626,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/fabri/Immagini/Wallpapers",
+        "directory": "/home/fabri/Immagini/HD",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

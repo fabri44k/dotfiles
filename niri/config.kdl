@@ -356,8 +356,14 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-    draw-border-with-background false 
+    draw-border-with-background false
     // opacity 0.98
+
+    // Uncomment to open every new tiled window as a maximized column (like pressing Mod+F).
+    // It applies to ALL new windows, not just the first one on the workspace: a second
+    // window also opens full width and pushes the previous one off-screen (scroll to reach it).
+    // Mod+F toggles a window back to default-column-width. Floating windows are unaffected.
+    // open-maximized true
 }
 
 binds {
@@ -378,7 +384,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Ctrl+Space hotkey-overlay-title="Run an Application: wofi" { spawn "wofi" "--show" "drun"; }
-    Mod+E hotkey-overlay-title="Open Files: nautilus" { spawn "nautilus"; }
+    Mod+E hotkey-overlay-title="Open Files: nautilus" { spawn "nautilus" "--new-window"; }
     Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "flatpak" "run" "app.zen_browser.zen"; }
     Ctrl+Alt+End hotkey-overlay-title="Session Menu: Spegni/Riavvia/Sospendi" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }

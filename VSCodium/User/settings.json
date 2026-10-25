@@ -7,7 +7,6 @@
   "workbench.startupEditor": "none",
   "workbench.layoutControl.enabled": false,
   "window.commandCenter": false,
-
   // ==========================================================================
   // Editor / Files
   // ==========================================================================
@@ -16,7 +15,6 @@
   "files.autoSave": "afterDelay",
   // Find in files (<leader>sg / <leader>sw) seeds with the word under the cursor
   "search.seedWithNearestWord": true,
-
   // ==========================================================================
   // Languages
   // ==========================================================================
@@ -34,7 +32,79 @@
       "strings": true
     }
   },
-
+  // MARKDOWN HEADINGS COLORS
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "name": "Markdown H1",
+        "scope": [
+          "heading.1.markdown entity.name.section.markdown",
+          "heading.1.markdown punctuation.definition.heading.markdown",
+          "markup.heading.setext.1.markdown"
+        ],
+        "settings": {
+          "foreground": "#E85A5A",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "Markdown H2",
+        "scope": [
+          "heading.2.markdown entity.name.section.markdown",
+          "heading.2.markdown punctuation.definition.heading.markdown",
+          "markup.heading.setext.2.markdown"
+        ],
+        "settings": {
+          "foreground": "#FF6B6B",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "Markdown H3",
+        "scope": [
+          "heading.3.markdown entity.name.section.markdown",
+          "heading.3.markdown punctuation.definition.heading.markdown"
+        ],
+        "settings": {
+          "foreground": "#E5C07B",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "Markdown H4",
+        "scope": [
+          "heading.4.markdown entity.name.section.markdown",
+          "heading.4.markdown punctuation.definition.heading.markdown"
+        ],
+        "settings": {
+          "foreground": "#6BCB77",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "Markdown H5",
+        "scope": [
+          "heading.5.markdown entity.name.section.markdown",
+          "heading.5.markdown punctuation.definition.heading.markdown"
+        ],
+        "settings": {
+          "foreground": "#4D96FF",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "name": "Markdown H6",
+        "scope": [
+          "heading.6.markdown entity.name.section.markdown",
+          "heading.6.markdown punctuation.definition.heading.markdown"
+        ],
+        "settings": {
+          "foreground": "#C77DFF",
+          "fontStyle": "bold"
+        }
+      }
+    ]
+  },
   // ==========================================================================
   // Extensions
   // ==========================================================================
@@ -42,7 +112,6 @@
   "latex-workshop.latex.outDir": "%TMPDIR%",
   "latex-workshop.message.error.show": false,
   "latex-workshop.message.warning.show": false,
-
   // ==========================================================================
   // VIM (VSCodeVim) — mirror of nvim/lua/keymaps.lua
   // Copy from here to the end of the file to port the whole vim setup.
@@ -52,17 +121,14 @@
     "vscodevim.vim": 1
   },
   "editor.lineNumbers": "relative",
-
   "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
   // Without this j/k open closed folds
   "vim.foldfix": true,
-
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
   "vim.highlightedyank.textColor": "white",
-
   // Keys left to VS Code instead of vim
   "vim.handleKeys": {
     "<C-a>": false,
@@ -73,67 +139,399 @@
     "<C-z>": false,
     "<C-y>": false
   },
-
   "vim.insertModeKeyBindings": [
-    { "before": ["j", "j"], "after": ["<Esc>"] }
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
   ],
-
   "vim.normalModeKeyBindingsNonRecursive": [
     // --- Basic remaps ---
-    { "before": ["<Esc>"], "commands": [":nohl"] },
-    { "before": ["x"], "after": ["\"", "_", "x"] },
-    { "before": ["Y"], "after": ["y", "$"] },
-    { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
-    { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
-    { "before": ["n"], "after": ["n", "z", "z"] },
-    { "before": ["N"], "after": ["N", "z", "z"] },
-
+    {
+      "before": [
+        "<Esc>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "x"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "x"
+      ]
+    },
+    {
+      "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<C-d>"
+      ],
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "<C-u>"
+      ],
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "n"
+      ],
+      "after": [
+        "n",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "before": [
+        "N"
+      ],
+      "after": [
+        "N",
+        "z",
+        "z"
+      ]
+    },
     // --- Buffers (editors) ---
-    { "before": ["<leader>", "q"], "commands": ["workbench.action.closeActiveEditor"] },
-    { "before": ["<leader>", "b"], "commands": ["workbench.action.files.newUntitledFile"] },
-    { "before": ["<leader>", "H"], "commands": ["workbench.action.moveEditorLeftInGroup"] },
-    { "before": ["<leader>", "L"], "commands": ["workbench.action.moveEditorRightInGroup"] },
-
+    {
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.files.newUntitledFile"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "H"
+      ],
+      "commands": [
+        "workbench.action.moveEditorLeftInGroup"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "L"
+      ],
+      "commands": [
+        "workbench.action.moveEditorRightInGroup"
+      ]
+    },
     // --- File explorer (neo-tree) ---
-    { "before": ["\\"], "commands": ["workbench.files.action.showActiveFileInExplorer"] },
-
+    {
+      "before": [
+        "\\"
+      ],
+      "commands": [
+        "workbench.files.action.showActiveFileInExplorer"
+      ]
+    },
     // --- Search (telescope) ---
-    { "before": ["<leader>", "s", "f"], "commands": ["workbench.action.quickOpen"] },
-    { "before": ["<leader>", "s", "g"], "commands": ["workbench.action.findInFiles"] },
-    { "before": ["<leader>", "s", "w"], "commands": ["workbench.action.findInFiles"] },
-    { "before": ["<leader>", "s", "."], "commands": ["workbench.action.openRecent"] },
-    { "before": ["<leader>", "s", "k"], "commands": ["workbench.action.openGlobalKeybindings"] },
-    { "before": ["<leader>", "s", "d"], "commands": ["workbench.actions.view.problems"] },
-    { "before": ["<leader>", "<leader>"], "commands": ["workbench.action.showAllEditorsByMostRecentlyUsed"] },
-    { "before": ["<leader>", "/"], "commands": ["workbench.action.quickTextSearch"] },
-
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "g"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "."
+      ],
+      "commands": [
+        "workbench.action.openRecent"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.openGlobalKeybindings"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "d"
+      ],
+      "commands": [
+        "workbench.actions.view.problems"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>"
+      ],
+      "commands": [
+        "workbench.action.showAllEditorsByMostRecentlyUsed"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "/"
+      ],
+      "commands": [
+        "workbench.action.quickTextSearch"
+      ]
+    },
     // --- LSP ---
-    { "before": ["g", "r", "d"], "commands": ["editor.action.revealDefinition"] },
-    { "before": ["g", "r", "D"], "commands": ["editor.action.revealDeclaration"] },
-    { "before": ["g", "r", "r"], "commands": ["editor.action.goToReferences"] },
-    { "before": ["g", "r", "i"], "commands": ["editor.action.goToImplementation"] },
-    { "before": ["g", "r", "t"], "commands": ["editor.action.goToTypeDefinition"] },
-    { "before": ["g", "r", "n"], "commands": ["editor.action.rename"] },
-    { "before": ["g", "r", "a"], "commands": ["editor.action.quickFix"] },
-    { "before": ["g", "O"], "commands": ["workbench.action.gotoSymbol"] },
-    { "before": ["g", "W"], "commands": ["workbench.action.showAllSymbols"] },
-    { "before": ["K"], "commands": ["editor.action.showHover"] },
-    { "before": ["<leader>", "f"], "commands": ["editor.action.formatDocument"] },
-    { "before": ["<leader>", "o"], "commands": ["outline.focus"] },
-
+    {
+      "before": [
+        "g",
+        "r",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r",
+        "D"
+      ],
+      "commands": [
+        "editor.action.revealDeclaration"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r",
+        "t"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "O"
+      ],
+      "commands": [
+        "workbench.action.gotoSymbol"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "W"
+      ],
+      "commands": [
+        "workbench.action.showAllSymbols"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "o"
+      ],
+      "commands": [
+        "outline.focus"
+      ]
+    },
     // --- Diagnostics ---
-    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
-    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
-    { "before": ["<leader>", "d"], "commands": ["workbench.actions.view.problems"] }
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "commands": [
+        "workbench.actions.view.problems"
+      ]
+    }
   ],
-
   "vim.visualModeKeyBindingsNonRecursive": [
     // Stay in indent mode
-    { "before": ["<"], "after": ["<", "g", "v"] },
-    { "before": [">"], "after": [">", "g", "v"] },
+    {
+      "before": [
+        "<"
+      ],
+      "after": [
+        "<",
+        "g",
+        "v"
+      ]
+    },
+    {
+      "before": [
+        ">"
+      ],
+      "after": [
+        ">",
+        "g",
+        "v"
+      ]
+    },
     // Keep last yanked when pasting
-    { "before": ["p"], "after": ["\"", "_", "d", "P"] },
+    {
+      "before": [
+        "p"
+      ],
+      "after": [
+        "\"",
+        "_",
+        "d",
+        "P"
+      ]
+    },
     // LSP code action on selection
-    { "before": ["g", "r", "a"], "commands": ["editor.action.quickFix"] }
+    {
+      "before": [
+        "g",
+        "r",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    }
   ]
 }
