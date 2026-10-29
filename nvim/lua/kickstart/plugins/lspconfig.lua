@@ -290,6 +290,7 @@ return {
         'prettier', -- html/json/yaml/markdown formatter
         'shfmt', -- Shell formatter
         'checkmake', -- Makefile linter (nvim-lint)
+        'markdownlint', -- Markdown linter (nvim-lint)
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
